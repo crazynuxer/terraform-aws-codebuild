@@ -1,3 +1,5 @@
+data "aws_caller_identity" "current" {}
+
 module "codebuild_role" {
   source = "github.com/crazynuxer/terraform-aws-iam-role//modules/service?ref=v0.5.1"
   role_identifier   = "${var.product_domain}"
@@ -7,7 +9,7 @@ module "codebuild_role" {
 
 resource "aws_iam_role_policy_attachment" "codebuild_basic_role" {
   role       = "${module.codebuild_role.role_name}"
-  policy_arn = "arn:aws:iam::aws:policy/codebuild-ecr"
+  policy_arn = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:policy/codebuild-ecr"
 }
 
 resource "aws_iam_role_policy" "codebuild_additional_policy" {
