@@ -49,6 +49,7 @@ resource "aws_codebuild_project" "codebuild" {
   environment {
     compute_type                = "BUILD_GENERAL1_SMALL"
     image                       = "${var.ecr_image_name}"
+    image_pull_credentials_type = "S{var.ecr_credential}"
     privileged_mode             = false
     type                        = "LINUX_CONTAINER"
   }

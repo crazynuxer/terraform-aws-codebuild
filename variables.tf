@@ -49,3 +49,8 @@ variable "codebuild_github_location" {
   type = "string"
   description = "github repo url"
 }
+variable "ecr_credential" {
+  type        = "string"
+  description = "ecr credential for push or pull image CODEBUILD or SERVICE_ROLE"
+  default     = "SERVICE_ROLE"
+}
