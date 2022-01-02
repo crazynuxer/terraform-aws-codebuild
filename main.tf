@@ -1,7 +1,7 @@
 data "aws_caller_identity" "current" {}
 
 module "codebuild_role" {
-  source = "github.com/crazynuxer/terraform-aws-iam-role//modules/service?ref=v0.5.1"
+  source = "github.com/crazynuxer/terraform-aws-iam-role//modules/service?ref=v0.6.0"
   role_identifier   = "${var.product_domain}"
   role_description = "${var.codebuild_name}"
   aws_service = "codebuild.amazonaws.com"
@@ -20,7 +20,7 @@ resource "aws_iam_role_policy" "codebuild_additional_policy" {
 }
 
 module "random_id" {
-  source = "github.com/crazynuxer/terraform-aws-resource-naming?ref=v0.7.0"
+  source = "github.com/crazynuxer/terraform-aws-resource-naming?ref=v0.8.0"
   name_prefix   = "${var.product_domain}-${var.codebuild_name}"
   resource_type = "codebuild_project"
 }
