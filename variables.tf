@@ -49,3 +49,9 @@ variable "codebuild_github_location" {
   type = string
   description = "github repo url"
 }
+
+variable "codebuild_source_repository" {
+  type = string
+  description = "source repository eg: github, bitbucket, etc"
+  default = "GITHUB"
+}

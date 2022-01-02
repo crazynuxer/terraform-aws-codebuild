@@ -54,7 +54,7 @@ resource "aws_codebuild_project" "codebuild" {
     insecure_ssl        = false
     location            = "${var.codebuild_github_location}"
     report_build_status = false
-    type                = "GITHUB"
+    type                = "${var.codebuild_source_repository}"
   }
 }
 
