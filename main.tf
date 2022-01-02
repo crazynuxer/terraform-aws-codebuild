@@ -7,11 +7,6 @@ module "codebuild_role" {
   aws_service = "codebuild.amazonaws.com"
 }
 
-resource "aws_iam_role_policy_attachment" "codebuild_basic_role" {
-  role       = "${module.codebuild_role.role_name}"
-  policy_arn = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:policy/codebuild-ecr"
-}
-
 resource "aws_iam_role_policy" "codebuild_additional_policy" {
   name   = "${var.codebuild_name}"
   role   = "${module.codebuild_role.role_name}"
